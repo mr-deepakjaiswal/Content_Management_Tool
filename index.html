@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Content</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
+      </style>
+    <style>
+        body {
+            min-height: 96vh;
+            width: 99%;
+            font-family: Arial, sans-serif;
+            background: url('https://images.unsplash.com/photo-1534082753658-1dcb40af5719?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')  ;
+            background-size:cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: 'Agbalumo';
+        }
+        .container {
+            position: absolute;
+            top: 18%;
+            right: 10%;
+            width: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 25px;
+        }
+        #main{
+            height: 300px;
+            width: 500px;
+        }
+        form{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        label{
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-left: -150px;
+            padding: 5px 10px;
+        }
+        input{
+            font-size: 1.1rem;
+            padding: 5px ;
+            /* border: 2px solid red; */
+            
+        }
+        input[type=file]::file-selector-button {
+        border: none;
+        background: #084cdf;
+        padding: 5px 10px;
+        border-radius: 10px;
+        color: #fff;
+        cursor: pointer;
+        transition: background .2s ease-in-out;
+        }
+        input[type=file]::file-selector-button:hover {
+        background: #0d45a5;
+        }
+        input[type=submit]{
+        margin-right: 20px;
+        border: none;
+        background: #084cdf;
+        padding: 5px 10px;
+        margin-top: 10px;
+        border-radius: 10px;
+        color: #fff;
+        cursor: pointer;
+        transition: background .2s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Content Management Tool</h1>
+        <div id="main">
+            <form id="upload-form" enctype="multipart/form-data">
+                <label for="text">Add Text:</label>
+                <textarea id="text" name="text" rows="5" cols="40" placeholder="Add text here"></textarea>
+                
+                <label for="image">Add Image:</label>
+                <input type="file" id="image" name="image" accept="image/*">
+                
+                <label for="video">Add Video:</label>
+                <input type="file" id="video" name="video" accept="video/*">
+                
+                <input type="submit" value="Upload">
+            </form>
+        </div>
+        
+    </div>
+    
+    <script>
+        const uploadForm = document.getElementById('upload-form');
+
+        uploadForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(uploadForm);
+
+            // Handle text, image, and video here
+            const text = formData.get('text');
+            const imageFile = formData.get('image');
+            const videoFile = formData.get('video');
+
+            // You can now send this data to a server for processing or use it as needed.
+            console.log('Text:', text);
+            console.log('Image File:', imageFile);
+            console.log('Video File:', videoFile);
+        });
+    </script>
+</body>
+</html>
